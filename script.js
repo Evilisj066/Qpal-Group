@@ -1,51 +1,47 @@
-console.log("Career Compass script loaded!");
+document.getElementById("careerQuiz").addEventListener("submit", function (e) {
+  e.preventDefault(); // 🚫 Stop the form from submitting
 
-document.addEventListener("DOMContentLoaded", function () {
-  const quizForm = document.getElementById("careerQuiz");
+  const answers = document.querySelectorAll("input[type=radio]:checked");
+  const score = {
+    tech: 0,
+    health: 0,
+    arts: 0,
+    business: 0
+  };
 
-  if (!quizForm) {
-    console.error("Form with ID 'careerQuiz' not found!");
-    return;
+  // Count selected answers by category
+  answers.forEach(answer => {
+    const career = answer.getAttribute("data-career");
+    if (career && score[career] !== undefined) {
+      score[career]++;
+    }
+  });
+
+  // Determine the highest scoring career path
+  let topCareer = null;
+  let maxScore = -1;
+  for (const [career, value] of Object.entries(score)) {
+    if (value > maxScore) {
+      maxScore = value;
+      topCareer = career;
+    }
   }
 
-  quizForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+  // Show the result
+  const resultSection = document.getElementById("results");
+  const suggestion = document.getElementById("careerSuggestion");
 
-    let answers = [];
-    for (let i = 1; i <= 25; i++) {
-      const selected = document.querySelector(`input[name="q${i}"]:checked`);
-      if (!selected) {
-        document.getElementById("result").textContent = "❗ Please answer all 25 questions.";
-        return;
-      }
-      answers.push(selected.dataset.career); // Use data-career attribute
-    }
+  if (topCareer) {
+    suggestion.textContent = {
+      tech: "Technology - You could explore careers in programming, IT, or engineering.",
+      health: "Health - Consider nursing, medicine, therapy, or public health.",
+      arts: "Arts - Maybe pursue graphic design, music, writing, or performing arts.",
+      business: "Business - You might shine in entrepreneurship, marketing, or finance."
+    }[topCareer];
+  } else {
+    suggestion.textContent = "Please answer all questions to get a result.";
+  }
 
-    let counts = {};
-    answers.forEach(value => {
-      counts[value] = (counts[value] || 0) + 1;
-    });
-
-    let topCategory = Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
-
-    let result = "";
-    switch (topCategory) {
-      case "tech":
-        result = "💻 You may enjoy careers in Technology, Engineering, or IT!";
-        break;
-      case "health":
-        result = "🏥 You might thrive in Healthcare, Psychology, or Life Sciences!";
-        break;
-      case "arts":
-        result = "🎨 Creative fields like Arts, Media, or Communication could be your path!";
-        break;
-      case "business":
-        result = "📊 Business, Marketing, or Entrepreneurship might be perfect for you!";
-        break;
-      default:
-        result = "🔍 Hmm, try answering again! We couldn't determine a clear match.";
-    }
-
-    document.getElementById("result").textContent = result;
-  });
+  resultSection.style.display = "block";
+  resultSection.scrollIntoView({ behavior: "smooth" }); // Optional: scroll to result
 });
