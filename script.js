@@ -1,4 +1,3 @@
-
 console.log("Career Compass script loaded!");
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -19,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("result").textContent = "❗ Please answer all 25 questions.";
         return;
       }
-      answers.push(selected.value);
+      answers.push(selected.dataset.career); // Use data-career attribute
     }
 
     let counts = {};
@@ -32,16 +31,19 @@ document.addEventListener("DOMContentLoaded", function () {
     let result = "";
     switch (topCategory) {
       case "tech":
-        result = "💻 You may enjoy careers in Technology, Engineering, or Data Science!";
-        break;
-      case "creative":
-        result = "🎨 Creative fields like Design, Arts, or Media might be your vibe!";
+        result = "💻 You may enjoy careers in Technology, Engineering, or IT!";
         break;
       case "health":
-        result = "🏥 A career in Healthcare or Psychology may suit you!";
+        result = "🏥 You might thrive in Healthcare, Psychology, or Life Sciences!";
+        break;
+      case "arts":
+        result = "🎨 Creative fields like Arts, Media, or Communication could be your path!";
+        break;
+      case "business":
+        result = "📊 Business, Marketing, or Entrepreneurship might be perfect for you!";
         break;
       default:
-        result = "📚 Consider exploring careers in Business, Education, or Social Sciences.";
+        result = "🔍 Hmm, try answering again! We couldn't determine a clear match.";
     }
 
     document.getElementById("result").textContent = result;
