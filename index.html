@@ -1,246 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Career Compass</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <h1>Career Compass</h1>
-    <p>Discover careers that match your interests and strengths!</p>
-  </header>
+document.getElementById("careerQuiz").addEventListener("submit", function (e) {
+  e.preventDefault(); // 🚫 Stop the form from submitting
 
-  <main>
-    <section id="quiz">
-      <form id="careerQuiz">
-        
-<!-- ✅ BEGIN 25 QUESTIONS -->
+  const answers = document.querySelectorAll("input[type=radio]:checked");
+  const score = {
+    tech: 0,
+    health: 0,
+    arts: 0,
+    business: 0
+  };
 
-<!-- START OF QUIZ QUESTIONS -->
+  // Count selected answers by category
+  answers.forEach(answer => {
+    const career = answer.getAttribute("data-career");
+    if (career && score[career] !== undefined) {
+      score[career]++;
+    }
+  });
 
-<div class="question">
-  <p>1. What sounds like a dream project to you?</p>
-  <label><input type="radio" name="q1" data-career="tech"> Building an app that helps students study smarter</label><br>
-  <label><input type="radio" name="q1" data-career="health"> Designing a wellness plan to help people stay healthy</label><br>
-  <label><input type="radio" name="q1" data-career="arts"> Creating a short animated film for social media</label><br>
-  <label><input type="radio" name="q1" data-career="business"> Launching a small online store</label>
-</div>
+  // Determine the highest scoring career path
+  let topCareer = null;
+  let maxScore = -1;
+  for (const [career, value] of Object.entries(score)) {
+    if (value > maxScore) {
+      maxScore = value;
+      topCareer = career;
+    }
+  }
 
-<div class="question">
-  <p>2. Your friends say you're great at...</p>
-  <label><input type="radio" name="q2" data-career="tech"> Fixing tech issues and explaining things</label><br>
-  <label><input type="radio" name="q2" data-career="health"> Taking care of others and giving advice</label><br>
-  <label><input type="radio" name="q2" data-career="arts"> Bringing ideas to life through art or music</label><br>
-  <label><input type="radio" name="q2" data-career="business"> Taking the lead and making decisions</label>
-</div>
+  // Show the result
+  const resultSection = document.getElementById("results");
+  const suggestion = document.getElementById("careerSuggestion");
 
-<div class="question">
-  <p>3. Pick a school subject you secretly enjoy:</p>
-  <label><input type="radio" name="q3" data-career="tech"> Math or Computer Science</label><br>
-  <label><input type="radio" name="q3" data-career="health"> Biology or Health</label><br>
-  <label><input type="radio" name="q3" data-career="arts"> Art or Music</label><br>
-  <label><input type="radio" name="q3" data-career="business"> Economics or Business Studies</label>
-</div>
+  if (topCareer) {
+    suggestion.textContent = {
+      tech: "Technology - You could explore careers in programming, IT, or engineering.",
+      health: "Health - Consider nursing, medicine, therapy, or public health.",
+      arts: "Arts - Maybe pursue graphic design, music, writing, or performing arts.",
+      business: "Business - You might shine in entrepreneurship, marketing, or finance."
+    }[topCareer];
+  } else {
+    suggestion.textContent = "Please answer all questions to get a result.";
+  }
 
-<div class="question">
-  <p>4. What would you rather do on a weekend?</p>
-  <label><input type="radio" name="q4" data-career="tech"> Join a hackathon or build something cool</label><br>
-  <label><input type="radio" name="q4" data-career="health"> Volunteer at a local community center</label><br>
-  <label><input type="radio" name="q4" data-career="arts"> Work on a painting or record music</label><br>
-  <label><input type="radio" name="q4" data-career="business"> Plan a side hustle or do market research</label>
-</div>
-
-<div class="question">
-  <p>5. What motivates you most?</p>
-  <label><input type="radio" name="q5" data-career="tech"> Solving problems creatively</label><br>
-  <label><input type="radio" name="q5" data-career="health"> Making a positive difference in people’s lives</label><br>
-  <label><input type="radio" name="q5" data-career="arts"> Expressing myself and being original</label><br>
-  <label><input type="radio" name="q5" data-career="business"> Creating opportunities and being my own boss</label>
-</div>
-
-<div class="question">
-  <p>6. What tool would you love to master?</p>
-  <label><input type="radio" name="q6" data-career="tech"> A programming language</label><br>
-  <label><input type="radio" name="q6" data-career="health"> A stethoscope or first aid kit</label><br>
-  <label><input type="radio" name="q6" data-career="arts"> A paintbrush or music software</label><br>
-  <label><input type="radio" name="q6" data-career="business"> A spreadsheet and budgeting tool</label>
-</div>
-
-<div class="question">
-  <p>7. In a group project, you usually...</p>
-  <label><input type="radio" name="q7" data-career="tech"> Handle research or tech tasks</label><br>
-  <label><input type="radio" name="q7" data-career="health"> Make sure everyone is supported and healthy</label><br>
-  <label><input type="radio" name="q7" data-career="arts"> Make the presentation look amazing</label><br>
-  <label><input type="radio" name="q7" data-career="business"> Take the lead and assign tasks</label>
-</div>
-
-<div class="question">
-  <p>8. Which environment appeals to you most?</p>
-  <label><input type="radio" name="q8" data-career="tech"> A modern tech lab or startup office</label><br>
-  <label><input type="radio" name="q8" data-career="health"> A clinic, hospital, or wellness center</label><br>
-  <label><input type="radio" name="q8" data-career="arts"> A studio filled with colors and music</label><br>
-  <label><input type="radio" name="q8" data-career="business"> A boardroom with charts and coffee</label>
-</div>
-
-<div class="question">
-  <p>9. Which role suits your personality best?</p>
-  <label><input type="radio" name="q9" data-career="tech"> Innovator or coder</label><br>
-  <label><input type="radio" name="q9" data-career="health"> Caregiver or helper</label><br>
-  <label><input type="radio" name="q9" data-career="arts"> Creator or storyteller</label><br>
-  <label><input type="radio" name="q9" data-career="business"> Leader or strategist</label>
-</div>
-
-<div class="question">
-  <p>10. What’s your favorite kind of challenge?</p>
-  <label><input type="radio" name="q10" data-career="tech"> Debugging complex code</label><br>
-  <label><input type="radio" name="q10" data-career="health"> Helping someone recover or improve</label><br>
-  <label><input type="radio" name="q10" data-career="arts"> Turning emotions into creative work</label><br>
-  <label><input type="radio" name="q10" data-career="business"> Finding new ways to make money</label>
-</div>
-
-        <div class="question">
-  <p>11. How do you handle problems?</p>
-  <label><input type="radio" name="q11" data-career="tech"> Break them down logically</label><br>
-  <label><input type="radio" name="q11" data-career="health"> Look at how they affect others</label><br>
-  <label><input type="radio" name="q11" data-career="arts"> Express them through writing or art</label><br>
-  <label><input type="radio" name="q11" data-career="business"> Find a way to turn it into a win</label>
-</div>
-
-<div class="question">
-  <p>12. Choose a dream workspace:</p>
-  <label><input type="radio" name="q12" data-career="tech"> Dual monitors, high-speed Wi-Fi</label><br>
-  <label><input type="radio" name="q12" data-career="health"> Clean, calm space with tools to help people</label><br>
-  <label><input type="radio" name="q12" data-career="arts"> Cozy studio with lights and instruments</label><br>
-  <label><input type="radio" name="q12" data-career="business"> A busy office with a whiteboard full of goals</label>
-</div>
-
-<div class="question">
-  <p>13. What kind of YouTube channel would you run?</p>
-  <label><input type="radio" name="q13" data-career="tech"> Tech tutorials and coding builds</label><br>
-  <label><input type="radio" name="q13" data-career="health"> Health tips and lifestyle advice</label><br>
-  <label><input type="radio" name="q13" data-career="arts"> Vlogs, music covers, or animations</label><br>
-  <label><input type="radio" name="q13" data-career="business"> Entrepreneurship hacks and motivation</label>
-</div>
-
-<div class="question">
-  <p>14. What would you do if you had a free day?</p>
-  <label><input type="radio" name="q14" data-career="tech"> Work on a side coding project</label><br>
-  <label><input type="radio" name="q14" data-career="health"> Spend time with family or help someone</label><br>
-  <label><input type="radio" name="q14" data-career="arts"> Visit a museum or play an instrument</label><br>
-  <label><input type="radio" name="q14" data-career="business"> Research investment or business ideas</label>
-</div>
-
-<div class="question">
-  <p>15. What's your biggest strength?</p>
-  <label><input type="radio" name="q15" data-career="tech"> Logical thinking</label><br>
-  <label><input type="radio" name="q15" data-career="health"> Empathy</label><br>
-  <label><input type="radio" name="q15" data-career="arts"> Creativity</label><br>
-  <label><input type="radio" name="q15" data-career="business"> Leadership</label>
-</div>
-
-<div class="question">
-  <p>16. Which club would you join in school?</p>
-  <label><input type="radio" name="q16" data-career="tech"> Robotics or coding club</label><br>
-  <label><input type="radio" name="q16" data-career="health"> Peer counseling or Red Cross Youth</label><br>
-  <label><input type="radio" name="q16" data-career="arts"> Theater, music, or art club</label><br>
-  <label><input type="radio" name="q16" data-career="business"> Junior Achievement or leadership club</label>
-</div>
-
-<div class="question">
-  <p>17. How do you prefer to work?</p>
-  <label><input type="radio" name="q17" data-career="tech"> Quietly and independently</label><br>
-  <label><input type="radio" name="q17" data-career="health"> Collaboratively with others</label><br>
-  <label><input type="radio" name="q17" data-career="arts"> Freely with lots of creative space</label><br>
-  <label><input type="radio" name="q17" data-career="business"> In a fast-paced team with clear goals</label>
-</div>
-
-<div class="question">
-  <p>18. What would you bring to a deserted island?</p>
-  <label><input type="radio" name="q18" data-career="tech"> A solar-powered laptop</label><br>
-  <label><input type="radio" name="q18" data-career="health"> A medical kit</label><br>
-  <label><input type="radio" name="q18" data-career="arts"> A journal and art supplies</label><br>
-  <label><input type="radio" name="q18" data-career="business"> A notebook to plan a survival business</label>
-</div>
-
-<div class="question">
-  <p>19. What’s your communication style?</p>
-  <label><input type="radio" name="q19" data-career="tech"> Straightforward and clear</label><br>
-  <label><input type="radio" name="q19" data-career="health"> Caring and supportive</label><br>
-  <label><input type="radio" name="q19" data-career="arts"> Expressive and colorful</label><br>
-  <label><input type="radio" name="q19" data-career="business"> Persuasive and confident</label>
-</div>
-
-<div class="question">
-  <p>20. What kind of success excites you?</p>
-  <label><input type="radio" name="q20" data-career="tech"> Creating tech that helps millions</label><br>
-  <label><input type="radio" name="q20" data-career="health"> Seeing lives improve because of your work</label><br>
-  <label><input type="radio" name="q20" data-career="arts"> Having your work featured or shared</label><br>
-  <label><input type="radio" name="q20" data-career="business"> Running a successful company</label>
-</div>
-
-<div class="question">
-  <p>21. What’s your biggest pet peeve?</p>
-  <label><input type="radio" name="q21" data-career="tech"> Glitchy systems or broken tech</label><br>
-  <label><input type="radio" name="q21" data-career="health"> Seeing someone in need and doing nothing</label><br>
-  <label><input type="radio" name="q21" data-career="arts"> People ignoring creativity and beauty</label><br>
-  <label><input type="radio" name="q21" data-career="business"> Wasting time or money</label>
-</div>
-
-<div class="question">
-  <p>22. Which quote speaks to you most?</p>
-  <label><input type="radio" name="q22" data-career="tech"> "Think logically, act effectively."</label><br>
-  <label><input type="radio" name="q22" data-career="health"> "Be the reason someone smiles today."</label><br>
-  <label><input type="radio" name="q22" data-career="arts"> "Creativity takes courage."</label><br>
-  <label><input type="radio" name="q22" data-career="business"> "Dream big. Start small. Act now."</label>
-</div>
-
-<div class="question">
-  <p>23. What’s your dream recognition?</p>
-  <label><input type="radio" name="q23" data-career="tech"> Winning a coding or innovation award</label><br>
-  <label><input type="radio" name="q23" data-career="health"> Being honored for saving lives</label><br>
-  <label><input type="radio" name="q23" data-career="arts"> Going viral for your art or video</label><br>
-  <label><input type="radio" name="q23" data-career="business"> Featured in a magazine for a startup</label>
-</div>
-
-<div class="question">
-  <p>24. Which activity sounds fun?</p>
-  <label><input type="radio" name="q24" data-career="tech"> Building a mini website or game</label><br>
-  <label><input type="radio" name="q24" data-career="health"> Learning first aid or CPR</label><br>
-  <label><input type="radio" name="q24" data-career="arts"> Writing poems or producing beats</label><br>
-  <label><input type="radio" name="q24" data-career="business"> Hosting a small online sale</label>
-</div>
-
-<div class="question">
-  <p>25. What’s your ultimate goal?</p>
-  <label><input type="radio" name="q25" data-career="tech"> Innovate and change the future</label><br>
-  <label><input type="radio" name="q25" data-career="health"> Heal and help others live better</label><br>
-  <label><input type="radio" name="q25" data-career="arts"> Inspire people through creativity</label><br>
-  <label><input type="radio" name="q25" data-career="business"> Achieve freedom and financial success</label>
-</div>
-
-<!-- END OF QUIZ QUESTIONS -->
-
-        
-        <!-- You can paste the entire batch I gave you earlier -->
-
-        <!-- ✅ Submit Button (inside form) -->
-        <button type="submit">Get My Career Match</button>
-      </form>
-    </section>
-
-    <!-- ✅ Result section (used by script.js) -->
-    <section id="results" style="display: none;">
-      <h2>Your Suggested Career:</h2>
-      <p id="careerSuggestion"></p>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Career Compass</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+  resultSection.style.display = "block";
+  resultSection.scrollIntoView({ behavior: "smooth" }); // Optional: scroll to result
+});
