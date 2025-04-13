@@ -1,7 +1,16 @@
 document.getElementById("careerQuiz").addEventListener("submit", function (e) {
-  e.preventDefault(); // 🚫 Stop the form from submitting
+  e.preventDefault();
 
   const answers = document.querySelectorAll("input[type=radio]:checked");
+  const resultSection = document.getElementById("results");
+  const suggestion = document.getElementById("careerSuggestion");
+
+  if (answers.length < 25) {
+    suggestion.textContent = "Please answer all 25 questions to get your result.";
+    resultSection.style.display = "block";
+    return;
+  }
+
   const score = {
     tech: 0,
     health: 0,
@@ -9,7 +18,6 @@ document.getElementById("careerQuiz").addEventListener("submit", function (e) {
     business: 0
   };
 
-  // Count selected answers by category
   answers.forEach(answer => {
     const career = answer.getAttribute("data-career");
     if (career && score[career] !== undefined) {
@@ -17,7 +25,6 @@ document.getElementById("careerQuiz").addEventListener("submit", function (e) {
     }
   });
 
-  // Determine the highest scoring career path
   let topCareer = null;
   let maxScore = -1;
   for (const [career, value] of Object.entries(score)) {
@@ -26,10 +33,6 @@ document.getElementById("careerQuiz").addEventListener("submit", function (e) {
       topCareer = career;
     }
   }
-
-  // Show the result
-  const resultSection = document.getElementById("results");
-  const suggestion = document.getElementById("careerSuggestion");
 
   if (topCareer) {
     suggestion.textContent = {
@@ -43,5 +46,5 @@ document.getElementById("careerQuiz").addEventListener("submit", function (e) {
   }
 
   resultSection.style.display = "block";
-  resultSection.scrollIntoView({ behavior: "smooth" }); // Optional: scroll to result
+  resultSection.scrollIntoView({ behavior: "smooth" });
 });
