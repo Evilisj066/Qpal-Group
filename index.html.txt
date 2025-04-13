@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Compass</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Career Compass</h1>
+    <nav>
+      <a href="#careers">Explore Careers</a>
+      <a href="#quiz">Take the Quiz</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero">
+      <h2>Find the path that fits you best.</h2>
+      <p>Discover careers that match your passions and goals.</p>
+      <a href="#quiz" class="cta-button">Start the Quiz</a>
+    </section>
+
+<section id="quiz">
+  <h2>What Career Fits You?</h2>
+  <p>Answer this quick quiz to get suggestions!</p>
+  <form id="careerQuiz">
+    <label>Do you enjoy working with computers?</label><br/>
+    <input type="radio" name="q1" value="tech"> Yes
+    <input type="radio" name="q1" value="non-tech"> No<br/><br/>
+
+    <label>Do you like helping people directly?</label><br/>
+    <input type="radio" name="q2" value="health"> Yes
+    <input type="radio" name="q2" value="other"> No<br/><br/>
+
+    <button type="submit">Get Result</button>
+  </form>
+
+  <div id="result" style="margin-top: 20px; font-weight: bold;"></div>
+</section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

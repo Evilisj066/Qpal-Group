@@ -1,0 +1,5 @@
+career-guide-website/
+│
+├── index.html       → Your homepage
+├── styles.css       → All your CSS styling
+└── script.js        → JavaScript (for quiz and interaction)
