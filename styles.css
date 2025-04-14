@@ -79,6 +79,16 @@ body {
 .question {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
+.question {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: none;
+}
+
+.question.active {
+  display: block;
+  opacity: 1;
+  
 }
 
 #choices button {
