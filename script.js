@@ -1,4 +1,43 @@
-document.getElementById("careerQuiz").addEventListener("submit", function (e) {
+let currentQuestion = 0;
+const questions = document.querySelectorAll(".question");
+const nextButton = document.getElementById("nextButton");
+const prevButton = document.getElementById("prevButton");
+const quizForm = document.getElementById("careerQuiz");
+
+function showQuestion(index) {
+  questions.forEach((q, i) => {
+    q.style.display = i === index ? "block" : "none";
+    q.style.opacity = i === index ? 1 : 0;
+  });
+
+  prevButton.style.display = index > 0 ? "inline-block" : "none";
+  nextButton.style.display = index < questions.length - 1 ? "inline-block" : "none";
+  if (index === questions.length - 1) quizForm.querySelector("button[type=submit]").style.display = "inline-block";
+  else quizForm.querySelector("button[type=submit]").style.display = "none";
+}
+
+nextButton.addEventListener("click", () => {
+  if (currentQuestion < questions.length - 1) {
+    questions[currentQuestion].classList.add("fade-out");
+    setTimeout(() => {
+      currentQuestion++;
+      showQuestion(currentQuestion);
+    }, 300);
+  }
+});
+
+prevButton.addEventListener("click", () => {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    showQuestion(currentQuestion);
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  showQuestion(currentQuestion);
+});
+
+quizForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
   const answers = document.querySelectorAll("input[type=radio]:checked");
@@ -42,8 +81,6 @@ document.getElementById("careerQuiz").addEventListener("submit", function (e) {
       business: "Business - You might shine in entrepreneurship, marketing, or finance."
     };
     suggestion.textContent = messages[topCareer];
-
-    // ✅ Load and display the roadmap
     showCareerRoadmap(topCareer);
   } else {
     suggestion.textContent = "Please answer all questions to get a result.";
@@ -53,7 +90,6 @@ document.getElementById("careerQuiz").addEventListener("submit", function (e) {
   resultSection.scrollIntoView({ behavior: "smooth" });
 });
 
-// ✅ Function to load and display career roadmap
 async function showCareerRoadmap(careerKey) {
   try {
     const response = await fetch("career_roadmaps.json");
