@@ -1,0 +1,34 @@
+{
+  "tech": {
+    "title": "Technology",
+    "shs_track": "STEM",
+    "college_courses": ["BS in Computer Science", "BS in Information Technology"],
+    "skills_certifications": ["Programming (Java, Python)", "Web Development", "AWS Certification"],
+    "entry_level_jobs": ["Junior Software Developer", "QA Tester"],
+    "advanced_jobs": ["Software Architect", "CTO"]
+  },
+  "health": {
+    "title": "Health",
+    "shs_track": "STEM",
+    "college_courses": ["BS in Nursing", "BS in Medical Technology"],
+    "skills_certifications": ["First Aid", "Basic Life Support", "NCLEX"],
+    "entry_level_jobs": ["Staff Nurse", "Healthcare Assistant"],
+    "advanced_jobs": ["Nurse Practitioner", "Clinical Instructor"]
+  },
+  "arts": {
+    "title": "Arts",
+    "shs_track": "HUMSS",
+    "college_courses": ["BA in Fine Arts", "AB in Multimedia Arts"],
+    "skills_certifications": ["Adobe Photoshop", "Animation", "Creative Writing"],
+    "entry_level_jobs": ["Graphic Designer", "Video Editor"],
+    "advanced_jobs": ["Creative Director", "Multimedia Manager"]
+  },
+  "business": {
+    "title": "Business",
+    "shs_track": "ABM",
+    "college_courses": ["BS in Business Administration", "BS in Marketing"],
+    "skills_certifications": ["Project Management", "Digital Marketing", "Bookkeeping"],
+    "entry_level_jobs": ["Marketing Assistant", "Sales Associate"],
+    "advanced_jobs": ["Entrepreneur", "Business Development Manager"]
+  }
+}
