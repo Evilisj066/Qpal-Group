@@ -4,30 +4,31 @@ const nextButton = document.getElementById("nextButton");
 const prevButton = document.getElementById("prevButton");
 const quizForm = document.getElementById("careerQuiz");
 
+// ✅ Apply initial active class
+questions[0].classList.add("active");
+
 function showQuestion(index) {
   questions.forEach((q, i) => {
-    q.style.display = i === index ? "block" : "none";
-    q.style.opacity = i === index ? 1 : 0;
+    q.classList.remove("active");
   });
+  questions[index].classList.add("active");
 
   prevButton.style.display = index > 0 ? "inline-block" : "none";
   nextButton.style.display = index < questions.length - 1 ? "inline-block" : "none";
-  if (index === questions.length - 1) quizForm.querySelector("button[type=submit]").style.display = "inline-block";
-  else quizForm.querySelector("button[type=submit]").style.display = "none";
+  quizForm.querySelector("button[type=submit]").style.display = index === questions.length - 1 ? "inline-block" : "none";
 }
 
 nextButton.addEventListener("click", () => {
   if (currentQuestion < questions.length - 1) {
-    questions[currentQuestion].classList.add("fade-out");
-    setTimeout(() => {
-      currentQuestion++;
-      showQuestion(currentQuestion);
-    }, 300);
+    questions[currentQuestion].classList.remove("active");
+    currentQuestion++;
+    showQuestion(currentQuestion);
   }
 });
 
 prevButton.addEventListener("click", () => {
   if (currentQuestion > 0) {
+    questions[currentQuestion].classList.remove("active");
     currentQuestion--;
     showQuestion(currentQuestion);
   }
