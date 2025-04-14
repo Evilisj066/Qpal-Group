@@ -73,22 +73,19 @@ body {
   background-color: white;
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
+/* ✅ FIXED QUESTION TRANSITIONS */
 .question {
-  font-size: 1.25rem;
-  margin-bottom: 1.5rem;
-.question {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
   display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
 }
 
 .question.active {
   display: block;
   opacity: 1;
-  
 }
 
 #choices button {
@@ -126,7 +123,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
