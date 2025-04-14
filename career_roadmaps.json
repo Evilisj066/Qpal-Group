@@ -2,33 +2,33 @@
   "tech": {
     "title": "Technology",
     "shs_track": "STEM",
-    "college_courses": ["BS in Computer Science", "BS in Information Technology"],
-    "skills_certifications": ["Programming (Java, Python)", "Web Development", "AWS Certification"],
-    "entry_level_jobs": ["Junior Software Developer", "QA Tester"],
-    "advanced_jobs": ["Software Architect", "CTO"]
+    "college_courses": ["BS in Computer Science", "BS in Information Technology", "BS in Computer Engineering"],
+    "skills_certifications": ["Programming (Java, Python, C++)", "Web Development", "Database Management", "AWS/Google Cloud Certification"],
+    "entry_level_jobs": ["Junior Software Developer", "QA Tester", "IT Support Specialist"],
+    "advanced_jobs": ["Software Architect", "DevOps Engineer", "CTO"]
   },
   "health": {
     "title": "Health",
     "shs_track": "STEM",
-    "college_courses": ["BS in Nursing", "BS in Medical Technology"],
-    "skills_certifications": ["First Aid", "Basic Life Support", "NCLEX"],
-    "entry_level_jobs": ["Staff Nurse", "Healthcare Assistant"],
-    "advanced_jobs": ["Nurse Practitioner", "Clinical Instructor"]
+    "college_courses": ["BS in Nursing", "BS in Medical Technology", "BS in Physical Therapy", "Doctor of Medicine"],
+    "skills_certifications": ["First Aid", "Basic Life Support", "NCLEX", "Medical Terminology"],
+    "entry_level_jobs": ["Staff Nurse", "Healthcare Assistant", "Medical Technologist"],
+    "advanced_jobs": ["Nurse Practitioner", "Physician", "Clinical Instructor"]
   },
   "arts": {
     "title": "Arts",
     "shs_track": "HUMSS",
-    "college_courses": ["BA in Fine Arts", "AB in Multimedia Arts"],
-    "skills_certifications": ["Adobe Photoshop", "Animation", "Creative Writing"],
-    "entry_level_jobs": ["Graphic Designer", "Video Editor"],
-    "advanced_jobs": ["Creative Director", "Multimedia Manager"]
+    "college_courses": ["BA in Fine Arts", "AB in Multimedia Arts", "BA in Communication", "BA in Theater Arts"],
+    "skills_certifications": ["Adobe Creative Suite", "Photography", "Creative Writing", "Animation"],
+    "entry_level_jobs": ["Graphic Designer", "Multimedia Artist", "Content Creator"],
+    "advanced_jobs": ["Creative Director", "Art Director", "Film/TV Producer"]
   },
   "business": {
     "title": "Business",
     "shs_track": "ABM",
-    "college_courses": ["BS in Business Administration", "BS in Marketing"],
-    "skills_certifications": ["Project Management", "Digital Marketing", "Bookkeeping"],
-    "entry_level_jobs": ["Marketing Assistant", "Sales Associate"],
-    "advanced_jobs": ["Entrepreneur", "Business Development Manager"]
+    "college_courses": ["BS in Business Administration", "BS in Marketing", "BS in Accountancy", "Entrepreneurship"],
+    "skills_certifications": ["Project Management", "Digital Marketing", "Bookkeeping", "Financial Analysis"],
+    "entry_level_jobs": ["Marketing Assistant", "Sales Associate", "Junior Accountant"],
+    "advanced_jobs": ["Entrepreneur", "Business Analyst", "Marketing Director"]
   }
 }
