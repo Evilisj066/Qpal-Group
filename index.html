@@ -58,14 +58,32 @@
 
     #result {
       display: none;
-      text-align: center;
-      margin-top: 50px;
+      max-width: 800px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
     #track-result {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .result-section {
       margin-top: 20px;
+    }
+
+    .result-section h3 {
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
     }
   </style>
 </head>
@@ -77,8 +95,33 @@
   </div>
 
   <div id="result">
-    <h2>Your Recommended Track:</h2>
-    <p id="track-result"></p>
+    <div id="track-result"></div>
+    <p id="track-description"></p>
+
+    <div class="result-section">
+      <h3>Recommended SHS Track:</h3>
+      <p id="shs-track"></p>
+    </div>
+
+    <div class="result-section">
+      <h3>Suggested College Courses:</h3>
+      <ul id="college-courses"></ul>
+    </div>
+
+    <div class="result-section">
+      <h3>Important Skills & Certifications:</h3>
+      <ul id="skills-certifications"></ul>
+    </div>
+
+    <div class="result-section">
+      <h3>Entry-Level Job Opportunities:</h3>
+      <ul id="entry-level-jobs"></ul>
+    </div>
+
+    <div class="result-section">
+      <h3>Advanced Career Options:</h3>
+      <ul id="advanced-jobs"></ul>
+    </div>
   </div>
 
   <script src="script.js"></script>
