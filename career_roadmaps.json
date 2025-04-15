@@ -1,109 +1,109 @@
-const careerResults = {
-  tech: {
-    title: "Technology",
-    shsTrack: "STEM",
-    description: "You’re a problem solver who enjoys logic, innovation, and building the future through tech.",
-    collegeCourses: [
+{
+  "tech": {
+    "title": "Technology",
+    "description": "You have a strong interest in solving problems, building systems, and working with computers.",
+    "shs_track": "STEM",
+    "college_courses": [
       "BS in Computer Science",
       "BS in Information Technology",
       "BS in Computer Engineering"
     ],
-    skillsCertifications: [
+    "skills_certifications": [
       "Programming (Java, Python, C++)",
       "Web Development",
       "Database Management",
       "AWS/Google Cloud Certification"
     ],
-    entryLevelJobs: [
+    "entry_level_jobs": [
       "Junior Software Developer",
       "QA Tester",
       "IT Support Specialist"
     ],
-    advancedJobs: [
+    "advanced_jobs": [
       "Software Architect",
       "DevOps Engineer",
       "CTO"
     ]
   },
-  health: {
-    title: "Health",
-    shsTrack: "STEM",
-    description: "You care deeply about others and want to make a difference in the medical or wellness field.",
-    collegeCourses: [
+  "health": {
+    "title": "Health",
+    "description": "You are passionate about helping others and are interested in medical science and wellness.",
+    "shs_track": "STEM",
+    "college_courses": [
       "BS in Nursing",
       "BS in Medical Technology",
       "BS in Physical Therapy",
       "Doctor of Medicine"
     ],
-    skillsCertifications: [
+    "skills_certifications": [
       "First Aid",
       "Basic Life Support",
       "NCLEX",
       "Medical Terminology"
     ],
-    entryLevelJobs: [
+    "entry_level_jobs": [
       "Staff Nurse",
       "Healthcare Assistant",
       "Medical Technologist"
     ],
-    advancedJobs: [
+    "advanced_jobs": [
       "Nurse Practitioner",
       "Physician",
       "Clinical Instructor"
     ]
   },
-  arts: {
-    title: "Arts",
-    shsTrack: "HUMSS",
-    description: "You thrive in creative expression and love storytelling, design, or performing arts.",
-    collegeCourses: [
+  "arts": {
+    "title": "Arts",
+    "description": "You have a creative spirit and enjoy expressing yourself through visuals, writing, or performance.",
+    "shs_track": "HUMSS",
+    "college_courses": [
       "BA in Fine Arts",
       "AB in Multimedia Arts",
       "BA in Communication",
       "BA in Theater Arts"
     ],
-    skillsCertifications: [
+    "skills_certifications": [
       "Adobe Creative Suite",
       "Photography",
       "Creative Writing",
       "Animation"
     ],
-    entryLevelJobs: [
+    "entry_level_jobs": [
       "Graphic Designer",
       "Multimedia Artist",
       "Content Creator"
     ],
-    advancedJobs: [
+    "advanced_jobs": [
       "Creative Director",
       "Art Director",
       "Film/TV Producer"
     ]
   },
-  business: {
-    title: "Business",
-    shsTrack: "ABM",
-    description: "You have a sharp mind for strategy, leadership, and turning ideas into success.",
-    collegeCourses: [
+  "business": {
+    "title": "Business",
+    "description": "You have an entrepreneurial mindset and enjoy leading, managing, and analyzing markets.",
+    "shs_track": "ABM",
+    "college_courses": [
       "BS in Business Administration",
       "BS in Marketing",
       "BS in Accountancy",
       "Entrepreneurship"
     ],
-    skillsCertifications: [
+    "skills_certifications": [
       "Project Management",
       "Digital Marketing",
       "Bookkeeping",
       "Financial Analysis"
     ],
-    entryLevelJobs: [
+    "entry_level_jobs": [
       "Marketing Assistant",
       "Sales Associate",
       "Junior Accountant"
     ],
-    advancedJobs: [
+    "advanced_jobs": [
       "Entrepreneur",
       "Business Analyst",
       "Marketing Director"
     ]
   }
-};
+}
