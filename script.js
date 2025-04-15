@@ -316,14 +316,19 @@ async function showCareerRoadmap(careerKey) {
       <p><strong>Entry-level Jobs:</strong> ${roadmap.entry_level_jobs.join(", ")}</p>
       <p><strong>Advanced Jobs:</strong> ${roadmap.advanced_jobs.join(", ")}</p>
     `;
+
+    // ✅ Make sure the roadmap container becomes visible
+    container.style.display = "block";
   } catch (err) {
     console.error("Failed to load career roadmap:", err);
     const container = document.getElementById("roadmap");
     if (container) {
       container.innerHTML = "<p>⚠️ Unable to load roadmap. Please try again later.</p>";
+      container.style.display = "block"; // Still show something even if there's an error
     }
   }
 }
+
 
 // Initialize on page load
 document.addEventListener("DOMContentLoaded", showQuestion);
