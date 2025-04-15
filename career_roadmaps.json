@@ -1,34 +1,109 @@
-{
-  "tech": {
-    "title": "Technology",
-    "shs_track": "STEM",
-    "college_courses": ["BS in Computer Science", "BS in Information Technology", "BS in Computer Engineering"],
-    "skills_certifications": ["Programming (Java, Python, C++)", "Web Development", "Database Management", "AWS/Google Cloud Certification"],
-    "entry_level_jobs": ["Junior Software Developer", "QA Tester", "IT Support Specialist"],
-    "advanced_jobs": ["Software Architect", "DevOps Engineer", "CTO"]
+const careerResults = {
+  tech: {
+    title: "Technology",
+    shsTrack: "STEM",
+    description: "You’re a problem solver who enjoys logic, innovation, and building the future through tech.",
+    collegeCourses: [
+      "BS in Computer Science",
+      "BS in Information Technology",
+      "BS in Computer Engineering"
+    ],
+    skillsCertifications: [
+      "Programming (Java, Python, C++)",
+      "Web Development",
+      "Database Management",
+      "AWS/Google Cloud Certification"
+    ],
+    entryLevelJobs: [
+      "Junior Software Developer",
+      "QA Tester",
+      "IT Support Specialist"
+    ],
+    advancedJobs: [
+      "Software Architect",
+      "DevOps Engineer",
+      "CTO"
+    ]
   },
-  "health": {
-    "title": "Health",
-    "shs_track": "STEM",
-    "college_courses": ["BS in Nursing", "BS in Medical Technology", "BS in Physical Therapy", "Doctor of Medicine"],
-    "skills_certifications": ["First Aid", "Basic Life Support", "NCLEX", "Medical Terminology"],
-    "entry_level_jobs": ["Staff Nurse", "Healthcare Assistant", "Medical Technologist"],
-    "advanced_jobs": ["Nurse Practitioner", "Physician", "Clinical Instructor"]
+  health: {
+    title: "Health",
+    shsTrack: "STEM",
+    description: "You care deeply about others and want to make a difference in the medical or wellness field.",
+    collegeCourses: [
+      "BS in Nursing",
+      "BS in Medical Technology",
+      "BS in Physical Therapy",
+      "Doctor of Medicine"
+    ],
+    skillsCertifications: [
+      "First Aid",
+      "Basic Life Support",
+      "NCLEX",
+      "Medical Terminology"
+    ],
+    entryLevelJobs: [
+      "Staff Nurse",
+      "Healthcare Assistant",
+      "Medical Technologist"
+    ],
+    advancedJobs: [
+      "Nurse Practitioner",
+      "Physician",
+      "Clinical Instructor"
+    ]
   },
-  "arts": {
-    "title": "Arts",
-    "shs_track": "HUMSS",
-    "college_courses": ["BA in Fine Arts", "AB in Multimedia Arts", "BA in Communication", "BA in Theater Arts"],
-    "skills_certifications": ["Adobe Creative Suite", "Photography", "Creative Writing", "Animation"],
-    "entry_level_jobs": ["Graphic Designer", "Multimedia Artist", "Content Creator"],
-    "advanced_jobs": ["Creative Director", "Art Director", "Film/TV Producer"]
+  arts: {
+    title: "Arts",
+    shsTrack: "HUMSS",
+    description: "You thrive in creative expression and love storytelling, design, or performing arts.",
+    collegeCourses: [
+      "BA in Fine Arts",
+      "AB in Multimedia Arts",
+      "BA in Communication",
+      "BA in Theater Arts"
+    ],
+    skillsCertifications: [
+      "Adobe Creative Suite",
+      "Photography",
+      "Creative Writing",
+      "Animation"
+    ],
+    entryLevelJobs: [
+      "Graphic Designer",
+      "Multimedia Artist",
+      "Content Creator"
+    ],
+    advancedJobs: [
+      "Creative Director",
+      "Art Director",
+      "Film/TV Producer"
+    ]
   },
-  "business": {
-    "title": "Business",
-    "shs_track": "ABM",
-    "college_courses": ["BS in Business Administration", "BS in Marketing", "BS in Accountancy", "Entrepreneurship"],
-    "skills_certifications": ["Project Management", "Digital Marketing", "Bookkeeping", "Financial Analysis"],
-    "entry_level_jobs": ["Marketing Assistant", "Sales Associate", "Junior Accountant"],
-    "advanced_jobs": ["Entrepreneur", "Business Analyst", "Marketing Director"]
+  business: {
+    title: "Business",
+    shsTrack: "ABM",
+    description: "You have a sharp mind for strategy, leadership, and turning ideas into success.",
+    collegeCourses: [
+      "BS in Business Administration",
+      "BS in Marketing",
+      "BS in Accountancy",
+      "Entrepreneurship"
+    ],
+    skillsCertifications: [
+      "Project Management",
+      "Digital Marketing",
+      "Bookkeeping",
+      "Financial Analysis"
+    ],
+    entryLevelJobs: [
+      "Marketing Assistant",
+      "Sales Associate",
+      "Junior Accountant"
+    ],
+    advancedJobs: [
+      "Entrepreneur",
+      "Business Analyst",
+      "Marketing Director"
+    ]
   }
-}
+};
