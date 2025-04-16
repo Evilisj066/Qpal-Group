@@ -2,9 +2,8 @@ let currentQuestion = 0;
 const scores = { tech: 0, health: 0, arts: 0, business: 0 };
 const userAnswers = [];
 
-const quizData = [/* your 25-question array, unchanged */];
-
-{
+const quizData = [
+  {
     question: "What kind of weekend project excites you most?",
     options: [
       { text: "Writing a short story or composing music", career: "arts" },
@@ -49,6 +48,7 @@ const quizData = [/* your 25-question array, unchanged */];
       { text: "Teen Develops Community Wellness App", career: "health" }
     ]
   },
+  
   {
     question: "You’d love a class focused on:",
     options: [
@@ -229,9 +229,10 @@ const quizData = [/* your 25-question array, unchanged */];
       { text: "Improve the lives of others", career: "health" }
     ]
   }
+  // ... (Add the remaining 20 questions here to complete the quiz)
+];
 
 const questionContainer = document.getElementById("question-container");
-const nextBtn = document.getElementById("next-btn");
 const resultSection = document.getElementById("result");
 const trackResult = document.getElementById("track-result");
 
@@ -286,7 +287,6 @@ function showQuestion() {
 
 function showResult() {
   questionContainer.style.display = "none";
-  nextBtn.style.display = "none";
 
   let topCareer = Object.entries(scores).reduce(
     (max, entry) => (entry[1] > max[1] ? entry : max),
