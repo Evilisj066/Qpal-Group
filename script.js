@@ -1,9 +1,10 @@
 let currentQuestion = 0;
+const scores = { tech: 0, health: 0, arts: 0, business: 0 };
+const userAnswers = [];
 
-const quizData = [
-  // (Your existing 25 questions go here...)
-  
-  {
+const quizData = [/* your 25-question array, unchanged */];
+
+{
     question: "What kind of weekend project excites you most?",
     options: [
       { text: "Writing a short story or composing music", career: "arts" },
@@ -228,18 +229,18 @@ const quizData = [
       { text: "Improve the lives of others", career: "health" }
     ]
   }
-];
-
-const scores = {
-  tech: 0,
-  health: 0,
-  arts: 0,
-  business: 0
-};
 
 const questionContainer = document.getElementById("question-container");
+const nextBtn = document.getElementById("next-btn");
 const resultSection = document.getElementById("result");
 const trackResult = document.getElementById("track-result");
+
+// Optional spinner
+const loader = document.createElement("div");
+loader.id = "loader";
+loader.style.display = "none";
+loader.innerHTML = `<p>Loading...</p>`;
+document.body.appendChild(loader);
 
 function showQuestion() {
   const current = quizData[currentQuestion];
@@ -268,6 +269,11 @@ function showQuestion() {
     const selected = form.answer.value;
     if (selected) {
       scores[selected]++;
+      userAnswers.push({
+        question: quizData[currentQuestion].question,
+        answer: form.querySelector("input:checked").nextSibling.textContent.trim(),
+        career: selected
+      });
       currentQuestion++;
       if (currentQuestion < quizData.length) {
         showQuestion();
@@ -280,44 +286,32 @@ function showQuestion() {
 
 function showResult() {
   questionContainer.style.display = "none";
+  nextBtn.style.display = "none";
 
-  const highestScore = Math.max(...Object.values(scores));
-  const topCareers = Object.entries(scores)
-    .filter(([_, score]) => score === highestScore)
-    .map(([career]) => career);
+  let topCareer = Object.entries(scores).reduce(
+    (max, entry) => (entry[1] > max[1] ? entry : max),
+    ["", -1]
+  )[0];
 
-  let message;
-  if (topCareers.length === 1) {
-    message = `🎯 You align most with: ${formatCareer(topCareers[0])}`;
-  } else {
-    const joined = topCareers.map(formatCareer).join(" or ");
-    message = `🤔 You seem to fit in multiple areas: ${joined}`;
-  }
+  const messages = {
+    tech: "Technology - You could explore careers in programming, IT, or engineering.",
+    health: "Health - Consider nursing, medicine, therapy, or public health.",
+    arts: "Arts - Maybe pursue graphic design, music, writing, or performing arts.",
+    business: "Business - You might shine in entrepreneurship, marketing, or finance."
+  };
 
-  trackResult.textContent = message;
+  trackResult.textContent = messages[topCareer];
   resultSection.style.display = "block";
 
-  // Save result to localStorage
-  localStorage.setItem("careerQuizResult", JSON.stringify({ topCareers, scores }));
-
-  // Show roadmap for the first top career
-  showCareerRoadmap(topCareers[0]);
-}
-
-function formatCareer(key) {
-  const labels = {
-    tech: "Technology",
-    health: "Health",
-    arts: "Arts",
-    business: "Business"
-  };
-  return labels[key] || key;
+  showCareerRoadmap(topCareer);
+  showAnswerSummary();
+  showRetakeButton();
 }
 
 async function showCareerRoadmap(careerKey) {
+  loader.style.display = "block";
   try {
     const response = await fetch("career_roadmaps.json");
-    if (!response.ok) throw new Error("Network response was not ok");
     const data = await response.json();
     const roadmap = data[careerKey];
 
@@ -341,20 +335,75 @@ async function showCareerRoadmap(careerKey) {
       container.innerHTML = "<p>⚠️ Unable to load roadmap. Please try again later.</p>";
       container.style.display = "block";
     }
+  } finally {
+    loader.style.display = "none";
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const storedResult = localStorage.getItem("careerQuizResult");
-  if (storedResult) {
-    const parsed = JSON.parse(storedResult);
-    scores.tech = parsed.scores.tech;
-    scores.health = parsed.scores.health;
-    scores.arts = parsed.scores.arts;
-    scores.business = parsed.scores.business;
-    currentQuestion = quizData.length; // Skip to result
-    showResult();
-  } else {
-    showQuestion();
+function showAnswerSummary() {
+  const summary = document.createElement("div");
+  summary.classList.add("result-section");
+  summary.innerHTML = `
+    <h3>📝 Your Answers Summary:</h3>
+    <ul>
+      ${userAnswers
+        .map((item, i) => `<li><strong>Q${i + 1}:</strong> ${item.answer} (${item.career})</li>`)
+        .join("")}
+    </ul>
+  `;
+  resultSection.appendChild(summary);
+}
+
+function showRetakeButton() {
+  const btn = document.createElement("button");
+  btn.textContent = "Retake Quiz";
+  btn.style.marginTop = "20px";
+  btn.onclick = () => location.reload();
+  resultSection.appendChild(btn);
+}
+
+function setupDarkModeToggle() {
+  const toggle = document.createElement("button");
+  toggle.id = "dark-mode-toggle";
+  toggle.textContent = "🌙 Toggle Dark Mode";
+  toggle.style.position = "fixed";
+  toggle.style.top = "20px";
+  toggle.style.right = "20px";
+  toggle.style.padding = "10px";
+  toggle.style.zIndex = "999";
+
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+  });
+
+  document.body.appendChild(toggle);
+
+  if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark-mode");
   }
+}
+
+// Add dark mode styles
+const darkStyle = document.createElement("style");
+darkStyle.textContent = `
+  body.dark-mode {
+    background: #121212;
+    color: #f1f1f1;
+  }
+  body.dark-mode .quiz-container, 
+  body.dark-mode #result {
+    background: #1e1e1e;
+    color: #fff;
+  }
+  body.dark-mode input[type="radio"] + span {
+    color: #fff;
+  }
+`;
+document.head.appendChild(darkStyle);
+
+// Initialize
+document.addEventListener("DOMContentLoaded", () => {
+  showQuestion();
+  setupDarkModeToggle();
 });
