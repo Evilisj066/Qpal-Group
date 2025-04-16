@@ -2,222 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Career Compass Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Compass - Home</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background: #f5f5f5;
       margin: 0;
       padding: 0;
-    }
-
-    /* Welcome Section */
-    .welcome {
       text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #6e8efb, #a777e3);
-      color: white;
-      border-radius: 0 0 20px 20px;
     }
 
-    .welcome h1 {
+    .hero {
+      padding: 100px 20px;
+    }
+
+    h1 {
       font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .welcome p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Choices Section */
-    .choices {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .choices h2 {
       margin-bottom: 20px;
     }
 
-    .choice-grid {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .choice-card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      padding: 20px;
-      width: 280px;
-      transition: transform 0.2s;
-    }
-
-    .choice-card:hover {
-      transform: scale(1.05);
-    }
-
-    .choice-card h3 a {
-      text-decoration: none;
-      color: #4b2aad;
-    }
-
-    .choice-card p {
-      color: #555;
-    }
-
-    /* Quiz Styles */
-    .quiz-container {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 600px;
-      margin: 40px auto;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h1, h2 {
-      text-align: center;
-    }
-
-    form {
-      margin-top: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 10px;
-      font-size: 1rem;
-    }
-
-    input[type="radio"] {
-      margin-right: 10px;
-    }
-
-    #next-btn {
-      display: block;
-      margin: 30px auto 0;
-      padding: 10px 20px;
-      font-size: 1rem;
-      background: #007bff;
+    .cta-button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background-color: #007bff;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
+      text-decoration: none;
     }
 
-    #next-btn:hover {
-      background: #0056b3;
-    }
-
-    #result {
-      display: none;
-      max-width: 800px;
-      margin: 50px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    #track-result {
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .result-section {
-      margin-top: 20px;
-    }
-
-    .result-section h3 {
-      color: #007bff;
-      margin-bottom: 10px;
-    }
-
-    ul {
-      padding-left: 20px;
+    .cta-button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
-
-  <!-- Welcome Section -->
-  <section class="welcome">
-    <h1>Welcome to Qpal Group Career Compass Project!</h1>
-    <p>Your gateway to discovering your future path. Explore quizzes and read inspiring stories about real success.</p>
-  </section>
-
-  <!-- Take the Career Quiz Button -->
-<a href="quiz.html">
-  <button style="padding: 15px 30px; font-size: 1.2rem; background-color: #007bff; color: white; border: none; border-radius: 8px; cursor: pointer;">
-    🎯 Take the Career Quiz
-  </button>
-</a>
-
-
-  <!-- Choices Section -->
-  <section class="choices">
-    <h2>Explore Your Path</h2>
-    <div class="choice-grid">
-      <div class="choice-card">
-        <h3><a href="quiz.html">Take a Career Quiz</a></h3>
-        <p>Discover the right SHS track or college path for you.</p>
-      </div>
-      <div class="choice-card">
-        <h3><a href="success.html">Success Stories</a></h3>
-        <p>Be inspired by real stories of students who found success in their chosen courses.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quiz Section -->
-  <div class="quiz-container">
-    <h1>Career Compass</h1>
-    <div id="question-container"></div>
-    <button id="next-btn">Next</button>
+  <div class="hero">
+    <h1>Welcome to Career Compass</h1>
+    <p>Discover your ideal career path in just a few minutes!</p>
+    <a href="quiz.html" class="cta-button">🎯 Take the Career Quiz</a>
   </div>
-
-  <!-- Results Section -->
-  <div id="result">
-    <div id="track-result"></div>
-    <p id="track-description"></p>
-
-    <div id="roadmap" class="quiz-container" style="display: none; margin-top: 30px;"></div>
-
-    <div class="result-section">
-      <h3>Recommended SHS Track:</h3>
-      <p id="shs-track"></p>
-    </div>
-
-    <div class="result-section">
-      <h3>Suggested College Courses:</h3>
-      <ul id="college-courses"></ul>
-    </div>
-
-    <div class="result-section">
-      <h3>Important Skills & Certifications:</h3>
-      <ul id="skills-certifications"></ul>
-    </div>
-
-    <div class="result-section">
-      <h3>Entry-Level Job Opportunities:</h3>
-      <ul id="entry-level-jobs"></ul>
-    </div>
-
-    <div class="result-section">
-      <h3>Advanced Career Options:</h3>
-      <ul id="advanced-jobs"></ul>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
