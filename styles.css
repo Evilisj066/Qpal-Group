@@ -6,22 +6,25 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f4f7fa;
+  background: linear-gradient(to right, #fef9ff, #f4f7fa);
   color: #333;
 }
 
+/* 🔷 NAVIGATION */
 .navbar {
-  background-color: #1e1e2f;
+  background: linear-gradient(90deg, #6d28d9, #9333ea);
   color: white;
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
   align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-  font-weight: 600;
-  font-size: 1.5rem;
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: 1px;
 }
 
 .nav-links {
@@ -34,49 +37,67 @@ body {
   color: white;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.3s;
 }
 
+.nav-links a:hover {
+  color: #facc15;
+}
+
+/* 🌟 HERO SECTION */
 .hero {
   text-align: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
   color: white;
+  box-shadow: inset 0 -10px 30px rgba(0,0,0,0.1);
 }
 
 .hero h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .hero p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-inline: auto;
 }
 
 .start-btn {
-  background-color: white;
-  color: #4f46e5;
-  padding: 0.8rem 1.5rem;
+  background-color: #facc15;
+  color: #1e1e2f;
+  padding: 0.9rem 1.8rem;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 8px;
-  transition: 0.3s;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
 }
 
 .start-btn:hover {
-  background-color: #ddd;
+  background-color: #fde68a;
+  transform: translateY(-2px);
 }
 
+/* 🧠 QUIZ AREA */
 .quiz-container {
-  max-width: 600px;
+  max-width: 650px;
   margin: 4rem auto;
-  background-color: white;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease;
 }
 
-/* ✅ FIXED QUESTION TRANSITIONS */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .question {
   display: none;
   opacity: 0;
@@ -92,41 +113,63 @@ body {
   display: block;
   width: 100%;
   margin-bottom: 1rem;
-  padding: 0.75rem;
-  background-color: #4f46e5;
+  padding: 0.85rem;
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
-  transition: 0.2s;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 #choices button:hover {
-  background-color: #3730a3;
+  background: linear-gradient(90deg, #3730a3, #6b21a8);
+  transform: scale(1.02);
 }
 
 #next-btn {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   background-color: #10b981;
   color: white;
-  padding: 0.7rem 1.5rem;
+  padding: 0.8rem 1.8rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
 
+#next-btn:hover {
+  background-color: #059669;
+}
+
+/* 🏁 RESULT AREA */
 .result-container {
-  max-width: 600px;
+  max-width: 650px;
   margin: 3rem auto;
   background: white;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
+.result-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #4f46e5;
+}
+
+.result-container p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 📱 RESPONSIVE */
 @media (max-width: 768px) {
   .nav-links {
     flex-direction: column;
@@ -135,5 +178,14 @@ body {
 
   .quiz-container, .result-container {
     margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
   }
 }
