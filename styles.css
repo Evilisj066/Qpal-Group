@@ -4,8 +4,8 @@
 /* Global Styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: #e6f2ff;
+    color: #2a3b5f;
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -13,7 +13,7 @@ body {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, #4a90e2, #0061f2);
+    background: linear-gradient(135deg, #87cefa, #5ab0f8);
     color: white;
     padding: 40px 20px;
     text-align: center;
@@ -28,7 +28,7 @@ header h1 {
 
 /* Buttons */
 .button {
-    background: linear-gradient(135deg, #4a90e2, #0061f2);
+    background: linear-gradient(135deg, #5ab0f8, #409be0);
     color: white;
     padding: 12px 30px;
     font-size: 1em;
@@ -42,7 +42,7 @@ header h1 {
 .button:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
-    background: linear-gradient(135deg, #3a7bd5, #004cbf);
+    background: linear-gradient(135deg, #3a91d5, #2b80c4);
 }
 
 /* Quiz Section */
@@ -62,7 +62,7 @@ header h1 {
     font-size: 1.8em;
     font-weight: 600;
     margin-bottom: 25px;
-    color: #222;
+    color: #1a2a4f;
     text-align: center;
 }
 
@@ -76,7 +76,7 @@ header h1 {
 
 /* Career Cards */
 .career-card {
-    background: #fff;
+    background: #f0f8ff;
     padding: 25px 20px;
     border-radius: 16px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -89,18 +89,18 @@ header h1 {
 
 .career-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .career-card h3 {
     font-size: 1.6em;
-    color: #0061f2;
+    color: #1c7ed6;
     margin-bottom: 10px;
 }
 
 .career-card p {
     font-size: 0.95em;
-    color: #555;
+    color: #3a4a66;
 }
 
 /* Fade-in animation */
@@ -109,7 +109,7 @@ header h1 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Container for cards (optional grid layout) */
+/* Container for cards */
 .cards-container {
     display: flex;
     flex-wrap: wrap;
