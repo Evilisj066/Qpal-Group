@@ -355,12 +355,34 @@ function showAnswerSummary() {
 }
 
 function showRetakeButton() {
-  const btn = document.createElement("button");
-  btn.textContent = "Retake Quiz";
-  btn.style.marginTop = "20px";
-  btn.onclick = () => location.reload();
-  resultSection.appendChild(btn);
+  const btnContainer = document.createElement("div");
+  btnContainer.style.textAlign = "center";
+  btnContainer.style.marginTop = "30px";
+
+  const retakeBtn = document.createElement("button");
+  retakeBtn.textContent = "Retake Quiz";
+  retakeBtn.style.marginRight = "15px";
+  retakeBtn.style.padding = "10px 20px";
+  retakeBtn.style.borderRadius = "5px";
+  retakeBtn.style.border = "none";
+  retakeBtn.style.backgroundColor = "#007bff";
+  retakeBtn.style.color = "white";
+  retakeBtn.onclick = () => location.reload();
+
+  const homeBtn = document.createElement("a");
+  homeBtn.textContent = "⬅ Back to Home";
+  homeBtn.href = "index.html";
+  homeBtn.style.padding = "10px 20px";
+  homeBtn.style.borderRadius = "5px";
+  homeBtn.style.backgroundColor = "#6e8efb";
+  homeBtn.style.color = "white";
+  homeBtn.style.textDecoration = "none";
+
+  btnContainer.appendChild(retakeBtn);
+  btnContainer.appendChild(homeBtn);
+  resultSection.appendChild(btnContainer);
 }
+
 
 function setupDarkModeToggle() {
   const toggle = document.createElement("button");
