@@ -1,6 +1,8 @@
 let currentQuestion = 0;
 
 const quizData = [
+  // (Your existing 25 questions go here...)
+  
   {
     question: "What kind of weekend project excites you most?",
     options: [
@@ -226,7 +228,6 @@ const quizData = [
       { text: "Improve the lives of others", career: "health" }
     ]
   }
-  // ➕ Add the remaining 24 questions here...
 ];
 
 const scores = {
@@ -237,7 +238,6 @@ const scores = {
 };
 
 const questionContainer = document.getElementById("question-container");
-const nextBtn = document.getElementById("next-btn");
 const resultSection = document.getElementById("result");
 const trackResult = document.getElementById("track-result");
 
@@ -251,7 +251,7 @@ function showQuestion() {
     <form id="question-form">
       ${current.options
         .map(
-          (opt, idx) => `
+          (opt) => `
         <label>
           <input type="radio" name="answer" value="${opt.career}" required />
           ${opt.text}
@@ -280,28 +280,44 @@ function showQuestion() {
 
 function showResult() {
   questionContainer.style.display = "none";
-  nextBtn.style.display = "none";
 
-  let topCareer = Object.entries(scores).reduce(
-    (max, entry) => (entry[1] > max[1] ? entry : max),
-    ["", -1]
-  )[0];
+  const highestScore = Math.max(...Object.values(scores));
+  const topCareers = Object.entries(scores)
+    .filter(([_, score]) => score === highestScore)
+    .map(([career]) => career);
 
-  const messages = {
-    tech: "Technology - You could explore careers in programming, IT, or engineering.",
-    health: "Health - Consider nursing, medicine, therapy, or public health.",
-    arts: "Arts - Maybe pursue graphic design, music, writing, or performing arts.",
-    business: "Business - You might shine in entrepreneurship, marketing, or finance."
-  };
+  let message;
+  if (topCareers.length === 1) {
+    message = `🎯 You align most with: ${formatCareer(topCareers[0])}`;
+  } else {
+    const joined = topCareers.map(formatCareer).join(" or ");
+    message = `🤔 You seem to fit in multiple areas: ${joined}`;
+  }
 
-  trackResult.textContent = messages[topCareer];
+  trackResult.textContent = message;
   resultSection.style.display = "block";
-  showCareerRoadmap(topCareer);
+
+  // Save result to localStorage
+  localStorage.setItem("careerQuizResult", JSON.stringify({ topCareers, scores }));
+
+  // Show roadmap for the first top career
+  showCareerRoadmap(topCareers[0]);
+}
+
+function formatCareer(key) {
+  const labels = {
+    tech: "Technology",
+    health: "Health",
+    arts: "Arts",
+    business: "Business"
+  };
+  return labels[key] || key;
 }
 
 async function showCareerRoadmap(careerKey) {
   try {
     const response = await fetch("career_roadmaps.json");
+    if (!response.ok) throw new Error("Network response was not ok");
     const data = await response.json();
     const roadmap = data[careerKey];
 
@@ -317,18 +333,28 @@ async function showCareerRoadmap(careerKey) {
       <p><strong>Advanced Jobs:</strong> ${roadmap.advanced_jobs.join(", ")}</p>
     `;
 
-    // ✅ Make sure the roadmap container becomes visible
     container.style.display = "block";
   } catch (err) {
     console.error("Failed to load career roadmap:", err);
     const container = document.getElementById("roadmap");
     if (container) {
       container.innerHTML = "<p>⚠️ Unable to load roadmap. Please try again later.</p>";
-      container.style.display = "block"; // Still show something even if there's an error
+      container.style.display = "block";
     }
   }
 }
 
-
-// Initialize on page load
-document.addEventListener("DOMContentLoaded", showQuestion);
+document.addEventListener("DOMContentLoaded", () => {
+  const storedResult = localStorage.getItem("careerQuizResult");
+  if (storedResult) {
+    const parsed = JSON.parse(storedResult);
+    scores.tech = parsed.scores.tech;
+    scores.health = parsed.scores.health;
+    scores.arts = parsed.scores.arts;
+    scores.business = parsed.scores.business;
+    currentQuestion = quizData.length; // Skip to result
+    showResult();
+  } else {
+    showQuestion();
+  }
+});
