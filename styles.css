@@ -210,4 +210,20 @@ body {
   .hero p {
     font-size: 1rem;
   }
+
+  body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+#question-container label {
+  display: block;
+  margin: 10px 0;
+}
+
+#spinner {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 20px 0;
+}
 }
