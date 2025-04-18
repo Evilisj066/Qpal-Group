@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Optional: Smooth background fallback -->
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -26,6 +25,24 @@
       text-align: center;
       border-radius: 0 0 20px 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .logout-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: white;
+      color: #0061f2;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .logout-btn:hover {
+      background-color: #e0e0e0;
     }
 
     .quiz-header h1 {
@@ -117,6 +134,7 @@
   <div class="quiz-header">
     <h1>Career Compass Quiz</h1>
     <p>Answer the following questions to discover your ideal career path!</p>
+    <button class="logout-btn" onclick="logout()">Logout</button>
   </div>
 
   <main>
@@ -131,6 +149,40 @@
     </section>
   </main>
 
+  <!-- Your quiz script -->
   <script src="script.js"></script>
+
+  <!-- Firebase auth check -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+    // 🔧 Replace this with your actual Firebase config
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_MESSAGING_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // 🔐 Redirect if not logged in
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+
+    // 🔓 Logout function
+    window.logout = function () {
+      signOut(auth).then(() => {
+        window.location.href = "login.html";
+      });
+    };
+  </script>
 </body>
 </html>
