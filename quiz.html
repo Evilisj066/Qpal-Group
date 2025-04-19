@@ -45,12 +45,52 @@
     <section id="result" class="hidden bg-white rounded-xl shadow-md max-w-2xl mx-auto my-10 px-6 py-10">
       <h2 class="text-2xl font-semibold text-blue-600 mb-4">Your Suggested Career Path</h2>
       <p id="track-result" class="text-lg mb-4"></p>
-      <div id="roadmap"></div>
+      <div id="roadmap" class="text-sm space-y-2"></div>
     </section>
   </main>
 
   <!-- Quiz Logic -->
   <script src="script.js"></script>
+
+  <!-- Roadmap Script -->
+  <script>
+    function showCareerRoadmap(resultKey) {
+      fetch('career_roadmaps.json')
+        .then(response => {
+          if (!response.ok) throw new Error("Failed to load JSON");
+          return response.json();
+        })
+        .then(data => {
+          const roadmap = data[resultKey];
+          if (!roadmap) {
+            document.getElementById('roadmap').innerHTML = "<p>No roadmap found for this result.</p>";
+            return;
+          }
+
+          const content = `
+            <p><strong>Description:</strong> ${roadmap.description}</p>
+            <p><strong>Recommended SHS Track:</strong> ${roadmap.shs_track}</p>
+            <p><strong>College Courses:</strong> ${roadmap.college_courses.join(', ')}</p>
+            <p><strong>Skills & Certifications:</strong> ${roadmap.skills_certifications.join(', ')}</p>
+            <p><strong>Entry-Level Jobs:</strong> ${roadmap.entry_level_jobs.join(', ')}</p>
+            <p><strong>Advanced Jobs:</strong> ${roadmap.advanced_jobs.join(', ')}</p>
+          `;
+
+          document.getElementById('roadmap').innerHTML = content;
+        })
+        .catch(err => {
+          console.error(err);
+          document.getElementById('roadmap').innerHTML = "<p>Error loading career roadmap.</p>";
+        });
+    }
+
+    // This function must be called after quiz is scored
+    function showResults(track) {
+      document.getElementById('result').classList.remove('hidden');
+      document.getElementById('track-result').textContent = track.charAt(0).toUpperCase() + track.slice(1);
+      showCareerRoadmap(track);
+    }
+  </script>
 
   <!-- Dark Mode Toggle Script -->
   <script>
