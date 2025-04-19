@@ -5,159 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Career Quiz - Qpal Group</title>
 
-  <!-- Fonts and CSS -->
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          },
+        }
+      }
+    };
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f4f4f9;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-
-    .quiz-header {
-      background: linear-gradient(135deg, #4a90e2, #0061f2);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-      border-radius: 0 0 20px 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      position: relative;
-    }
-
-    .logout-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: white;
-      color: #0061f2;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .logout-btn:hover {
-      background-color: #e0e0e0;
-    }
-
-    .quiz-header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-
-    .quiz-header p {
-      font-size: 1.1em;
-      margin-top: 10px;
-    }
-
-    .quiz-container {
-      background: #ffffff;
-      padding: 50px 30px;
-      border-radius: 12px;
-      max-width: 700px;
-      margin: 40px auto;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    label {
-      display: block;
-      margin: 15px 0;
-      font-size: 1em;
-      cursor: pointer;
-    }
-
-    .result-section {
-      max-width: 700px;
-      margin: 30px auto;
-      background: #fff;
-      padding: 40px 30px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    #result h2 {
-      font-size: 1.8em;
-      color: #0061f2;
-      margin-bottom: 15px;
-    }
-
-    #loader {
-      text-align: center;
-      font-style: italic;
-      color: #777;
-      padding: 10px;
-    }
-
-    .button {
-      background-color: #0061f2;
-      color: white;
-      padding: 12px 24px;
-      font-size: 1em;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-block;
-      margin-top: 20px;
-    }
-
-    .button:hover {
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-      background-color: #004bb5;
-      transform: translateY(-2px);
-    }
-
-    @media (max-width: 768px) {
-      .quiz-header h1 {
-        font-size: 2em;
-      }
-
-      .quiz-container, .result-section {
-        padding: 30px 20px;
-        margin: 20px;
-      }
-
-      .button {
-        padding: 10px 20px;
-        font-size: 0.95em;
-      }
-    }
-  </style>
 </head>
 
-<body>
-  <div class="quiz-header">
-    <h1>Career Compass Quiz</h1>
-    <p>Answer the following questions to discover your ideal career path!</p>
-    <button class="logout-btn" onclick="logout()">Logout</button>
+<body class="font-poppins bg-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <div class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-10 px-6 rounded-b-3xl shadow-md relative text-center">
+    <h1 class="text-3xl md:text-4xl font-semibold">Career Compass Quiz</h1>
+    <p class="text-sm md:text-base mt-2">Answer the following questions to discover your ideal career path!</p>
+    <button class="absolute top-4 right-4 bg-white text-blue-600 font-semibold py-2 px-4 rounded-full shadow hover:bg-gray-100 transition" onclick="logout()">Logout</button>
   </div>
 
   <main>
-    <section class="quiz-container">
-      <div id="question-container"></div>
+    <!-- Quiz Container -->
+    <section class="bg-white rounded-xl shadow-md max-w-2xl mx-auto my-10 px-6 py-10">
+      <div id="question-container" class="space-y-6"></div>
     </section>
 
-    <section id="result" class="result-section" style="display: none;">
-      <h2>Your Suggested Career Path</h2>
-      <p id="track-result"></p>
+    <!-- Result Section -->
+    <section id="result" class="hidden bg-white rounded-xl shadow-md max-w-2xl mx-auto my-10 px-6 py-10">
+      <h2 class="text-2xl font-semibold text-blue-600 mb-4">Your Suggested Career Path</h2>
+      <p id="track-result" class="text-lg mb-4"></p>
       <div id="roadmap"></div>
     </section>
   </main>
 
-  <!-- Your quiz script -->
+  <!-- Quiz Logic -->
   <script src="script.js"></script>
 
-  <!-- Firebase auth check -->
+  <!-- Firebase Auth Check -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
-    // 🔧 Replace this with your actual Firebase config
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
       authDomain: "YOUR_PROJECT.firebaseapp.com",
@@ -170,22 +64,17 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // 🔐 Redirect if not logged in
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "login.html";
       }
     });
 
-    // 🔓 Logout function
     window.logout = function () {
       signOut(auth).then(() => {
         window.location.href = "login.html";
       });
     };
   </script>
-  <!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-
 </body>
 </html>
