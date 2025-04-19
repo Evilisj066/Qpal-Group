@@ -268,19 +268,24 @@ function showQuestion() {
 
     const form = document.getElementById("question-form");
     form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const selected = form.answer.value;
-      if (selected) {
-        scores[selected]++;
-        userAnswers.push({
-          question: quizData[currentQuestion].question,
-          answer: form.querySelector("input:checked").nextSibling.textContent.trim(),
-          career: selected
-        });
-        currentQuestion++;
-        showQuestion();
-      }
+  e.preventDefault();
+  const selected = form.answer.value;
+  if (selected) {
+    scores[selected]++;
+    userAnswers.push({
+      question: quizData[currentQuestion].question,
+      answer: form.querySelector("input:checked").nextSibling.textContent.trim(),
+      career: selected
     });
+    currentQuestion++;
+    if (currentQuestion >= quizData.length) {
+      showResult();
+      return;
+    }
+    showQuestion();
+  }
+});
+
 
     questionContainer.style.opacity = 1;
   }, 200);
@@ -382,6 +387,8 @@ btnContainer.classList.add("retake-container");
 function setupDarkModeToggle() {
 const toggleContainer = document.createElement("div");
 toggleContainer.classList.add("dark-toggle-container");
+  document.body.appendChild(loader);
+
 
 
   const label = document.createElement("label");
