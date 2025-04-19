@@ -1,134 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <button id="darkModeToggle" class="button" style="position: fixed; top: 20px; left: 20px; z-index: 999;">
-  🌙 Dark Mode
-</button>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Career Compass - Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #d6ecff, #f1f8ff);
-      text-align: center;
-      padding: 40px 20px;
-      color: #333;
-    }
-
-    .hero {
-      padding: 60px 20px;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      color: #004a99;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-      color: #555;
-    }
-
-    .cta-button, #start-quiz-btn {
-      background-color: #007bff;
-      color: white;
-      padding: 15px 30px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .cta-button:hover, #start-quiz-btn:hover {
-      background-color: #0056b3;
-    }
-
-    .card-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 40px;
-      gap: 20px;
-    }
-
-    .card {
-      background-color: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      width: 280px;
-      padding: 30px 20px;
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      color: #007bff;
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #666;
-      font-size: 1rem;
-    }
-
-    .card a {
-      text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-      .card-section {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
+  <title>Qpal-Group Career Compass</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="hero">
-    <h1>Welcome to Qpal-Group Career Compass Project</h1>
-    <p>Discover your ideal career path in just a few minutes!</p>
-    <a href="quiz.html">
-      <button id="start-quiz-btn">Take the Career Quiz</button>
-    </a>
 
-    <div class="card-section">
-      <div class="card">
-        <a href="quiz.html">
-          <h3>Take a Career Quiz</h3>
-          <p>Discover the right SHS track or college path for you.</p>
-        </a>
-      </div>
-      <div class="card">
-        <a href="success.html">
-          <h3>Success Stories</h3>
-          <p>Be inspired by real stories of students who found success in their chosen courses.</p>
-        </a>
-      </div>
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Qpal-Group Career Compass Project</h1>
+      <p>Discover your ideal career path in just a few minutes!</p>
+      <a href="quiz.html" class="button">Take the Career Quiz</a>
     </div>
   </div>
 
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css">
+  <div class="section">
+    <div class="card">
+      <h2>Take a Career Quiz</h2>
+      <p>Discover the right SHS track or college path for you based on your interests.</p>
+      <a href="quiz.html" class="link">Start the Quiz</a>
+    </div>
 
+    <div class="card">
+      <h2>Success Stories</h2>
+      <p>Be inspired by students who found success in their chosen careers and educational journeys.</p>
+      <a href="stories.html" class="link">Read Stories</a>
+    </div>
+  </div>
 
-  
 </body>
 </html>
