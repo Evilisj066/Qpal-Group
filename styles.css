@@ -1,176 +1,184 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Qpal-Group Career Compass</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom, #e6f2ff, #ffffff);
-      color: #2a3b5f;
-      line-height: 1.6;
-    }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #e6f2ff, #ffffff);
+  color: #2a3b5f;
+  line-height: 1.6;
+  transition: background 0.4s, color 0.4s;
+}
 
-    .hero {
-      background: url('/mnt/data/0e20a674-5569-4fc6-8faa-4e81c78eaf27.png') no-repeat center center/cover;
-      color: white;
-      text-align: center;
-      padding: 120px 20px;
-      position: relative;
-    }
+a {
+  text-decoration: none;
+}
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 1;
-    }
+button, a.button {
+  background: #409be0;
+  color: white;
+  padding: 14px 32px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
+button:hover, a.button:hover {
+  background: #2b80c4;
+  transform: scale(1.05);
+}
 
-    .hero h1 {
-      font-size: 3em;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
+/* Hero Section */
+.hero {
+  background: url('hero-bg.png') no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 120px 20px;
+  position: relative;
+}
 
-    .hero p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
 
-      
-    }
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
 
-#question-container {
+.hero h1 {
+  font-size: 3em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+/* Section Layout */
+.section {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Cards */
+.card {
+  background-color: #ffffff;
+  padding: 30px 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  transition: transform 0.3s;
+  max-width: 600px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: #1c7ed6;
+}
+
+.card p {
+  color: #444;
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+a.link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #1c7ed6;
+  font-weight: 500;
+}
+
+a.link:hover {
+  text-decoration: underline;
+}
+
+/* Quiz and Result Container */
+#question-container,
+#result {
+  padding: 20px;
   transition: opacity 0.3s ease;
 }
 
-    .button {
-      background: #409be0;
-      color: white;
-      padding: 14px 32px;
-      border-radius: 30px;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
+#result {
+  background-color: #fff;
+  border-radius: 10px;
+}
 
-    .button:hover {
-      background: #2b80c4;
-      transform: scale(1.05);
-    }
-
-    .section {
-      text-align: center;
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .card {
-      background-color: #ffffff;
-      padding: 30px 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin: 20px auto;
-      transition: transform 0.3s;
-      max-width: 600px;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h2 {
-      font-size: 1.8em;
-      margin-bottom: 10px;
-      color: #1c7ed6;
-    }
-
-    .card p {
-      color: #444;
-      font-size: 1em;
-      margin-bottom: 15px;
-    }
-
-    a.link {
-      display: inline-block;
-      margin-top: 10px;
-      color: #1c7ed6;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    a.link:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-    #question-container,
-    #result {
-      padding: 10px;
-      font-size: 16px;
-    }
-
-    button,
-    a {
-      width: 100%;
-      margin: 10px 0;
-      padding: 12px;
-      font-size: 16px;
-    }
-
-    label {
-      font-size: 16px;
-    }
-
-    h2, h3 {
-      font-size: 20px;
-    }
-
-    p {
-      font-size: 16px;
-    }
+/* Responsive */
+@media (max-width: 600px) {
+  #question-container,
+  #result {
+    padding: 10px;
+    font-size: 16px;
   }
-  </style>
-</head>
-<body>
 
-  <div class="hero">
-    <div class="hero-content">
-      <h1>Welcome to Qpal-Group Career Compass Project</h1>
-      <p>Discover your ideal career path in just a few minutes!</p>
-      <a href="quiz.html" class="button">Take the Career Quiz</a>
-    </div>
-  </div>
+  button,
+  a.button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    font-size: 16px;
+  }
 
-  <div class="section">
-    <div class="card">
-      <h2>Take a Career Quiz</h2>
-      <p>Discover the right SHS track or college path for you based on your interests.</p>
-      <a href="quiz.html" class="link">Start the Quiz</a>
-    </div>
+  label {
+    font-size: 16px;
+  }
 
-    <div class="card">
-      <h2>Success Stories</h2>
-      <p>Be inspired by students who found success in their chosen careers and educational journeys.</p>
-      <a href="stories.html" class="link">Read Stories</a>
-    </div>
-  </div>
+  h2, h3 {
+    font-size: 20px;
+  }
 
-</body>
-</html>
+  p {
+    font-size: 16px;
+  }
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: linear-gradient(to bottom, #1e293b, #0f172a);
+  color: #f1f5f9;
+}
+
+body.dark-mode .card {
+  background-color: #1e293b;
+  color: #f1f5f9;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .card h2,
+body.dark-mode .link {
+  color: #60a5fa;
+}
+
+body.dark-mode .button,
+body.dark-mode button {
+  background: #3b82f6;
+  color: white;
+}
+
+body.dark-mode .button:hover,
+body.dark-mode button:hover {
+  background: #2563eb;
+}
