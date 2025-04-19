@@ -5,7 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Qpal-Group Career Compass</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>/* Global Styles */
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Qpal-Group Career Compass Project</h1>
+      <p>Discover your ideal career path in just a few minutes!</p>
+      <a href="quiz.html" class="button">Take the Career Quiz</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="card">
+      <h2>Take a Career Quiz</h2>
+      <p>Discover the right SHS track or college path for you based on your interests.</p>
+      <a href="quiz.html" class="link">Start the Quiz</a>
+    </div>
+
+    <div class="card">
+      <h2>Success Stories</h2>
+      <p>Be inspired by students who found success in their chosen careers and educational journeys.</p>
+      <a href="stories.html" class="link">Read Stories</a>
+    </div>
+  </div>
+/* Global Styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -197,31 +222,6 @@ body.dark-mode button:hover {
   z-index: 999;
 }
 
-  </style>
-</head>
-<body>
-
-  <div class="hero">
-    <div class="hero-content">
-      <h1>Welcome to Qpal-Group Career Compass Project</h1>
-      <p>Discover your ideal career path in just a few minutes!</p>
-      <a href="quiz.html" class="button">Take the Career Quiz</a>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="card">
-      <h2>Take a Career Quiz</h2>
-      <p>Discover the right SHS track or college path for you based on your interests.</p>
-      <a href="quiz.html" class="link">Start the Quiz</a>
-    </div>
-
-    <div class="card">
-      <h2>Success Stories</h2>
-      <p>Be inspired by students who found success in their chosen careers and educational journeys.</p>
-      <a href="stories.html" class="link">Read Stories</a>
-    </div>
-  </div>
 
 </body>
 </html>
