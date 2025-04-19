@@ -244,46 +244,49 @@ loader.innerHTML = `<p>Loading...</p>`;
 document.body.appendChild(loader);
 
 function showQuestion() {
-  const current = quizData[currentQuestion];
-  if (!current) return;
+  questionContainer.style.opacity = 0;
 
-  questionContainer.innerHTML = `
-    <h2>Question ${currentQuestion + 1} of ${quizData.length}</h2>
-    <p>${current.question}</p>
-    <form id="question-form">
-      ${current.options
-        .map(
-          (opt) => `
-        <label>
-          <input type="radio" name="answer" value="${opt.career}" required />
-          ${opt.text}
-        </label>`
-        )
-        .join("")}
-      <button type="submit">${currentQuestion === quizData.length - 1 ? "Finish" : "Next"}</button>
-    </form>
-  `;
+  setTimeout(() => {
+    const current = quizData[currentQuestion];
+    if (!current) return;
 
-  const form = document.getElementById("question-form");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const selected = form.answer.value;
-    if (selected) {
-      scores[selected]++;
-      userAnswers.push({
-        question: quizData[currentQuestion].question,
-        answer: form.querySelector("input:checked").nextSibling.textContent.trim(),
-        career: selected
-      });
-      currentQuestion++;
-      if (currentQuestion < quizData.length) {
+    questionContainer.innerHTML = `
+      <h2>Question ${currentQuestion + 1} of ${quizData.length}</h2>
+      <p>${current.question}</p>
+      <form id="question-form">
+        ${current.options
+          .map(
+            (opt) => `
+          <label>
+            <input type="radio" name="answer" value="${opt.career}" required />
+            ${opt.text}
+          </label>`
+          )
+          .join("")}
+        <button type="submit">${currentQuestion === quizData.length - 1 ? "Finish" : "Next"}</button>
+      </form>
+    `;
+
+    const form = document.getElementById("question-form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const selected = form.answer.value;
+      if (selected) {
+        scores[selected]++;
+        userAnswers.push({
+          question: quizData[currentQuestion].question,
+          answer: form.querySelector("input:checked").nextSibling.textContent.trim(),
+          career: selected
+        });
+        currentQuestion++;
         showQuestion();
-      } else {
-        showResult();
       }
-    }
-  });
+    });
+
+    questionContainer.style.opacity = 1;
+  }, 200);
 }
+
 
 function showResult() {
   questionContainer.style.display = "none";
