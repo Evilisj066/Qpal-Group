@@ -190,6 +190,13 @@ body.dark-mode button:hover {
   background: #2563eb;
 }
 
+#darkModeToggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+}
+
   </style>
 </head>
 <body>
