@@ -1,41 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <style>
-  @media (max-width: 600px) {
-    #question-container,
-    #result {
-      padding: 10px;
-      font-size: 16px;
-    }
-
-    button,
-    a {
-      width: 100%;
-      margin: 10px 0;
-      padding: 12px;
-      font-size: 16px;
-    }
-
-    label {
-      font-size: 16px;
-    }
-
-    h2, h3 {
-      font-size: 20px;
-    }
-
-    p {
-      font-size: 16px;
-    }
-  }
-</style>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Career Quiz - Qpal Group</title>
 
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -49,8 +19,38 @@
     };
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-</head>
 
+  <!-- Mobile Styles -->
+  <style>
+    @media (max-width: 600px) {
+      #question-container,
+      #result {
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      button,
+      a {
+        width: 100%;
+        margin: 10px 0;
+        padding: 12px;
+        font-size: 16px;
+      }
+
+      label {
+        font-size: 16px;
+      }
+
+      h2, h3 {
+        font-size: 20px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
 <body class="font-poppins bg-gray-100 text-gray-800">
 
   <!-- Header -->
@@ -61,7 +61,7 @@
   </div>
 
   <main>
-    <!-- Quiz Container -->
+    <!-- Quiz Section -->
     <section class="bg-white rounded-xl shadow-md max-w-2xl mx-auto my-10 px-6 py-10">
       <div id="question-container" class="space-y-6"></div>
     </section>
@@ -82,29 +82,32 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC9s3lEYT7DWoCUNEEbBuHD1ZtZpofsSR8",
-  authDomain: "career-compass-9f864.firebaseapp.com",
-  projectId: "career-compass-9f864",
-  storageBucket: "career-compass-9f864.appspot.com",
-  messagingSenderId: "549479661639",
-  appId: "1:549479661639:web:b7c4ceb1117da7c42a7162",
-  measurementId: "G-T9WDE75HPD"
-};
-
+    const firebaseConfig = {
+      apiKey: "AIzaSyC9s3lEYT7DWoCUNEEbBuHD1ZtZpofsSR8",
+      authDomain: "career-compass-9f864.firebaseapp.com",
+      projectId: "career-compass-9f864",
+      storageBucket: "career-compass-9f864.appspot.com",
+      messagingSenderId: "549479661639",
+      appId: "1:549479661639:web:b7c4ceb1117da7c42a7162",
+      measurementId: "G-T9WDE75HPD"
+    };
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
+    // Redirect to login page if not authenticated
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "login.html";
       }
     });
 
+    // Logout function
     window.logout = function () {
       signOut(auth).then(() => {
         window.location.href = "login.html";
+      }).catch((error) => {
+        console.error("Logout failed:", error.message);
       });
     };
   </script>
