@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <button id="darkModeToggle" class="button" style="position: fixed; top: 20px; left: 20px; z-index: 999;">
-  🌙 Dark Mode
-</button>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Career Quiz - Qpal Group</title>
@@ -23,39 +19,14 @@
     };
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Mobile Styles -->
-  <style>
-    @media (max-width: 600px) {
-      #question-container,
-      #result {
-        padding: 10px;
-        font-size: 16px;
-      }
-
-      button,
-      a {
-        width: 100%;
-        margin: 10px 0;
-        padding: 12px;
-        font-size: 16px;
-      }
-
-      label {
-        font-size: 16px;
-      }
-
-      h2, h3 {
-        font-size: 20px;
-      }
-
-      p {
-        font-size: 16px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="font-poppins bg-gray-100 text-gray-800">
+
+  <!-- Dark Mode Toggle Button -->
+  <button id="darkModeToggle" class="button">
+    🌙 Dark Mode
+  </button>
 
   <!-- Header -->
   <div class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-10 px-6 rounded-b-3xl shadow-md relative text-center">
@@ -81,6 +52,15 @@
   <!-- Quiz Logic -->
   <script src="script.js"></script>
 
+  <!-- Dark Mode Toggle Script -->
+  <script>
+    document.getElementById('darkModeToggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const mode = document.body.classList.contains('dark-mode') ? '🌞 Light Mode' : '🌙 Dark Mode';
+      document.getElementById('darkModeToggle').textContent = mode;
+    });
+  </script>
+
   <!-- Firebase Auth Check -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
@@ -99,14 +79,12 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // Redirect to login page if not authenticated
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "login.html";
       }
     });
 
-    // Logout function
     window.logout = function () {
       signOut(auth).then(() => {
         window.location.href = "login.html";
@@ -115,8 +93,5 @@
       });
     };
   </script>
-
-  <link rel="stylesheet" href="style.css">
-
 </body>
 </html>
