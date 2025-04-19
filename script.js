@@ -282,10 +282,6 @@ function showQuestion() {
       showResult();
       return;
     }
-    // At the top of showQuestion()
-const progressBar = document.getElementById("progress-bar");
-const progress = ((currentQuestionIndex + 1) / quizData.length) * 100;
-progressBar.style.width = progress + "%";
     showQuestion();
   }
 });
