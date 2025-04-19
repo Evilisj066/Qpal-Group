@@ -388,30 +388,75 @@ function showRetakeButton() {
 
 
 function setupDarkModeToggle() {
-  const toggle = document.createElement("button");
-  toggle.id = "dark-mode-toggle";
-  toggle.textContent = "🌙 Toggle Dark Mode";
-  toggle.style.position = "fixed";
-  toggle.style.top = "20px";
-  toggle.style.right = "20px";
-  toggle.style.padding = "10px";
-  toggle.style.zIndex = "999";
+  const toggleContainer = document.createElement("div");
+  toggleContainer.style.position = "fixed";
+  toggleContainer.style.top = "20px";
+  toggleContainer.style.right = "20px";
+  toggleContainer.style.zIndex = "999";
+  toggleContainer.style.display = "flex";
+  toggleContainer.style.alignItems = "center";
+  toggleContainer.style.gap = "10px";
 
-  toggle.addEventListener("click", () => {
+  const label = document.createElement("label");
+  label.textContent = "🌙";
+  label.setAttribute("for", "dark-mode-toggle");
+
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.id = "dark-mode-toggle";
+  checkbox.style.transform = "scale(1.5)";
+  checkbox.style.cursor = "pointer";
+
+  // Load saved preference
+  if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark-mode");
+    checkbox.checked = true;
+  }
+
+  checkbox.addEventListener("change", () => {
     document.body.classList.toggle("dark-mode");
     localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
   });
 
-  document.body.appendChild(toggle);
-
-  if (localStorage.getItem("darkMode") === "true") {
-    document.body.classList.add("dark-mode");
-  }
+  toggleContainer.appendChild(label);
+  toggleContainer.appendChild(checkbox);
+  document.body.appendChild(toggleContainer);
 }
+
 
 // Add dark mode styles
 const darkStyle = document.createElement("style");
-darkStyle.textContent += `
+darkStyle.textContent = `
+  body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+  }
+
+  body.dark-mode h2,
+  body.dark-mode h3,
+  body.dark-mode p,
+  body.dark-mode label {
+    color: #f0f0f0;
+  }
+
+  body.dark-mode input[type="radio"] {
+    accent-color: #f0f0f0;
+  }
+
+  body.dark-mode button {
+    background-color: #444;
+    color: #f0f0f0;
+  }
+
+  body.dark-mode button:hover {
+    background-color: #666;
+  }
+
+  body.dark-mode .result-section {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+  }
+
   input[type="radio"] {
     margin-right: 8px;
   }
@@ -440,14 +485,14 @@ darkStyle.textContent += `
   }
 
   .result-section {
-    background: #2c2c2c;
+    background: #f8f8f8;
     padding: 15px;
     margin-top: 20px;
     border-radius: 10px;
   }
 `;
-
 document.head.appendChild(darkStyle);
+
 
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
