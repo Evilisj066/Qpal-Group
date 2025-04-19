@@ -313,6 +313,18 @@ button:hover {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .progress-bar-container {
+    height: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .progress-bar {
+    background-color: #4caf50; /* Greenish for better visibility on mobile */
+  }
+}
+
+
 
 </body>
 </html>
