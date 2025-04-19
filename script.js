@@ -408,20 +408,42 @@ function setupDarkModeToggle() {
 
 // Add dark mode styles
 const darkStyle = document.createElement("style");
-darkStyle.textContent = `
-  body.dark-mode {
-    background: #121212;
-    color: #f1f1f1;
+darkStyle.textContent += `
+  input[type="radio"] {
+    margin-right: 8px;
   }
-  body.dark-mode .quiz-container, 
-  body.dark-mode #result {
-    background: #1e1e1e;
-    color: #fff;
+
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
   }
-  body.dark-mode input[type="radio"] + span {
-    color: #fff;
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  a:hover {
+    opacity: 0.9;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .result-section {
+    background: #2c2c2c;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
   }
 `;
+
 document.head.appendChild(darkStyle);
 
 // Initialize
