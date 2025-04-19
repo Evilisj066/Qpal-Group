@@ -241,7 +241,6 @@ const loader = document.createElement("div");
 loader.id = "loader";
 loader.style.display = "none";
 loader.innerHTML = `<p>Loading...</p>`;
-document.body.appendChild(loader);
 
 function showQuestion() {
   questionContainer.style.opacity = 0;
@@ -364,22 +363,15 @@ function showRetakeButton() {
 
   const retakeBtn = document.createElement("button");
   retakeBtn.textContent = "Retake Quiz";
-  retakeBtn.style.marginRight = "15px";
-  retakeBtn.style.padding = "10px 20px";
-  retakeBtn.style.borderRadius = "5px";
-  retakeBtn.style.border = "none";
-  retakeBtn.style.backgroundColor = "#007bff";
-  retakeBtn.style.color = "white";
+
   retakeBtn.onclick = () => location.reload();
 
   const homeBtn = document.createElement("a");
   homeBtn.textContent = "⬅ Back to Home";
   homeBtn.href = "index.html";
-  homeBtn.style.padding = "10px 20px";
-  homeBtn.style.borderRadius = "5px";
-  homeBtn.style.backgroundColor = "#6e8efb";
-  homeBtn.style.color = "white";
+ 
   homeBtn.style.textDecoration = "none";
+btnContainer.classList.add("retake-container");
 
   btnContainer.appendChild(retakeBtn);
   btnContainer.appendChild(homeBtn);
@@ -388,14 +380,9 @@ function showRetakeButton() {
 
 
 function setupDarkModeToggle() {
-  const toggleContainer = document.createElement("div");
-  toggleContainer.style.position = "fixed";
-  toggleContainer.style.top = "20px";
-  toggleContainer.style.right = "20px";
-  toggleContainer.style.zIndex = "999";
-  toggleContainer.style.display = "flex";
-  toggleContainer.style.alignItems = "center";
-  toggleContainer.style.gap = "10px";
+const toggleContainer = document.createElement("div");
+toggleContainer.classList.add("dark-toggle-container");
+
 
   const label = document.createElement("label");
   label.textContent = "🌙";
