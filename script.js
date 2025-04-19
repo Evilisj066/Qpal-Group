@@ -242,11 +242,6 @@ loader.id = "loader";
 loader.style.display = "none";
 loader.innerHTML = `<p>Loading...</p>`;
 
-// At the top of showQuestion()
-const progressBar = document.getElementById("progress-bar");
-const progress = ((currentQuestionIndex + 1) / quizData.length) * 100;
-progressBar.style.width = progress + "%";
-
 function showQuestion() {
   questionContainer.style.opacity = 0;
 
@@ -287,6 +282,10 @@ function showQuestion() {
       showResult();
       return;
     }
+    // At the top of showQuestion()
+const progressBar = document.getElementById("progress-bar");
+const progress = ((currentQuestionIndex + 1) / quizData.length) * 100;
+progressBar.style.width = progress + "%";
     showQuestion();
   }
 });
