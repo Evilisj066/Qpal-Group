@@ -253,13 +253,14 @@ function updateProgressBar(currentIndex, totalQuestions) {
 
 
 function showQuestion() {
-  updateProgressBar(index, questions.length);
+  updateProgressBar(currentQuestion, quizData.length);
 
   questionContainer.style.opacity = 0;
 
   setTimeout(() => {
     const current = quizData[currentQuestion];
     if (!current) return;
+
 
     questionContainer.innerHTML = `
       <h2>Question ${currentQuestion + 1} of ${quizData.length}</h2>
