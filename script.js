@@ -242,7 +242,19 @@ loader.id = "loader";
 loader.style.display = "none";
 loader.innerHTML = `<p>Loading...</p>`;
 
+function updateProgressBar(currentIndex, totalQuestions) {
+  const progressBar = document.getElementById("progress-bar");
+  const progressText = document.getElementById("progress-text");
+
+  const percentage = ((currentIndex + 1) / totalQuestions) * 100;
+  progressBar.style.width = `${percentage}%`;
+  progressText.textContent = `Question ${currentIndex + 1} of ${totalQuestions}`;
+}
+
+
 function showQuestion() {
+  updateProgressBar(index, questions.length);
+
   questionContainer.style.opacity = 0;
 
   setTimeout(() => {
