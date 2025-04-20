@@ -153,6 +153,45 @@ a.link:hover {
   transition: opacity 0.3s ease;
 }
 
+#progress-container {
+  width: 100%;
+  background-color: #eee;
+  border-radius: 8px;
+  margin: 20px auto;
+  padding: 4px;
+  position: relative;
+  max-width: 600px;
+}
+
+#progress-bar {
+  height: 16px;
+  width: 0%;
+  background-color: #4caf50;
+  border-radius: 8px;
+  transition: width 0.3s ease-in-out;
+}
+
+#progress-text {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Optional: Dark Mode Support */
+.dark-mode #progress-container {
+  background-color: #444;
+}
+
+.dark-mode #progress-bar {
+  background-color: #00b894;
+}
+
+.dark-mode #progress-text {
+  color: #eee;
+}
+
+
 #result {
   background-color: #fff;
   border-radius: 10px;
